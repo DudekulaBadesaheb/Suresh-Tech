@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KPDBC Tech Institute</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- text style -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="./suresh tech logo.png"
+      style="border-radius: 10px"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        color: #fff;
+      }
+
+      /* ===== Header ===== */
+      .navbar {
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        color: #ffffff !important;
+      }
+
+      .navbar-brand img {
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        margin-right: 15px;
+        transition: 0.3s;
+      }
+
+      .nav-link:hover {
+        color: #00aaff !important;
+      }
+
+      /* ===== Hero Section ===== */
+      .hero {
+        position: relative;
+        height: 90vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .hero video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(55%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        padding: 20px;
+      }
+
+      .hero-content h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        color: #f1f1f1;
+        margin: 15px 0;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+      }
+
+      .btn-explore {
+        border: 2px solid #ffffff;
+        color: #ffffff;
+        background: transparent;
+        border-radius: 50px;
+        padding: 10px 30px;
+        transition: 0.3s;
+        font-weight: 500;
+      }
+
+      .btn-explore:hover {
+        background: #00aaff;
+        color: #000;
+      }
+
+      /* ===== Logos Section ===== */
+      .logos {
+        background: #fff;
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      .logos img {
+        width: 90px;
+        margin: 15px;
+        opacity: 0.8;
+        transition: 0.3s;
+      }
+
+      .logos img:hover {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        background: #000;
+        color: #ddd;
+        padding: 40px 8%;
+      }
+
+      .footer-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .footer-col {
+        flex: 1 1 30%;
+        margin-bottom: 20px;
+      }
+
+      .footer-col h5 {
+        color: #00aaff;
+        margin-bottom: 15px;
+      }
+
+      .footer-col p,
+      .footer-col a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.95rem;
+        line-height: 1.8;
+      }
+
+      .footer-col a:hover {
+        color: #00aaff;
+      }
+
+      .social-icons a {
+        font-size: 1.4rem;
+        margin: 0 10px;
+        color: #00aaff;
+        transition: 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #fff;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        border-top: 1px solid #222;
+        padding-top: 15px;
+        font-size: 0.9rem;
+        color: #aaa;
+      }
+
+      @media (max-width: 992px) {
+        .hero-content h1 {
+          font-size: 2.2rem;
+        }
+        .footer-row {
+          text-align: center;
+        }
+        .footer-col {
+          flex: 1 1 100%;
+        }
+      }
+
+      /* body images */
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background: #fff;
+        color: #fff;
+      }
+      .panel-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px;
+      }
+
+      .panel {
+        position: relative;
+        width: 250px;
+        height: 350px;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .panel:hover {
+        transform: scale(1.05);
+      }
+
+      .panel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .panel:hover .overlay {
+        opacity: 1;
+      }
+
+      .overlay h2 {
+        margin: 0;
+        font-size: 20px;
+        color: #00ffe7;
+      }
+
+      .overlay p {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      /* body icons logos */
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #222;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        font-weight: 600;
+        margin: 40px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        color: #111;
+      }
+
+      .feature {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 30px;
+      }
+
+      .feature i {
+        font-size: 34px;
+        color: #00aaff;
+        margin-right: 18px;
+        flex-shrink: 0;
+      }
+
+      .feature h5 {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: #555;
+        font-size: 15px;
+      }
+
+      @media (max-width: 768px) {
+        .col-md-6 {
+          margin-bottom: 40px;
+        }
+      }
+      /* hed teat style */
+      /* #hedtext {
+        // -webkit-text-stroke: 1px #fdfffd;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--primary);
+      } */
+
+      /* whatsApp button */
+      /* WhatsApp Button Styles */
+      .whatsapp-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px; /* Changed from left to right */
+        z-index: 1000;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #04c94c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .whatsapp-button img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
+      }
+
+      /* Contact form */
+      /* body {
+        background: none;
+        min-height: 100vh;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+      } */
+      .container-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        max-width: 1000px;
+        width: 100%;
+      }
+      .card {
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 30px;
+        width: 100%;
+        max-width: 420px;
+      }
+      .card label,
+      .card input,
+      .card textarea,
+      .card h3 {
+        color: #000;
+      }
+      .btn-primary {
+        background: #00c3ff;
+        border: none;
+        transition: 0.3s;
+      }
+      .btn-primary:hover {
+        background: #0077ff;
+        transform: scale(1.05);
+      }
+      .info-box {
+        background-image: url("./image\ copy.png"); /* Replace with your image */
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        padding: 30px;
+        flex: 1;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+      }
+      .info-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0);
+        border-radius: 20px;
+      }
+      .info-box-content {
+        position: relative;
+        z-index: 1;
+      }
+      .info-box h4 {
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+      .info-box p {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      .info-box i {
+        margin-right: 10px;
+      }
+      /* states section and numbers printing */
+      /* STATS SECTION */
+      .stat-card {
+        padding: 25px;
+        border-radius: 12px;
+        background: #fff;
+        text-align: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .number {
+        font-size: 45px;
+        font-weight: bold;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- WhatsApp Button -->
+    <a
+      href="https://wa.me/917997739198"
+      class="whatsapp-button"
+      target="_blank"
+      rel="noopener"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+      />
+    </a>
+    <!-- ===== Header ===== -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#" id="hedtext">
+          <img
+            src="./suresh tech logo.png"
+            alt="Logo"
+            style="border-radius: 10px"
+          /><strong><em> SURESH TECH </em></strong>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <i class="bi bi-list text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./Courses.html"><em>Courses</em></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Contact"><em>Contact</em></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./about.html"><em>About</em></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="./user.html"
+                style="background-color: #007bff; border-radius: 13px"
+                ><em>Start</em></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== Hero Section (Video Background) ===== -->
+    <section class="hero">
+      <video autoplay muted loop>
+        <source src="./suresh tech1 (1).mp4" type="video/mp4" />
+      </video>
+
+      <div class="hero-content">
+        <h2><em>Excellence in VLSI Training</em></h2>
+        <p>
+          <em>
+            Advance your career with cutting-edge courses in VLSI, VLSI Testing,
+            and technology innovation. Learn, create, and grow with Suresh Tech.
+          </em>
+        </p>
+        <a href="./Courses.html"
+          ><button class="btn-explore">Explore Courses</button></a
+        >
+      </div>
+    </section>
+    <!-- technolygys in fucher logos -->
+    <section>
+      <div class="container py-4">
+        <h1>Design the Future Today</h1>
+
+        <div class="row">
+          <!-- Industry Column -->
+          <div class="col-md-6">
+            <h2 class="section-title">Industry</h2>
+
+            <div class="feature">
+              <i class="fa-solid fa-microchip"></i>
+              <div>
+                <h5>AI Chip Development</h5>
+                <p>
+                  Achieve first-pass silicon success in your AI chip development
+                  journey.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fa-solid fa-server"></i>
+              <div>
+                <h5>HPC & Data Center</h5>
+                <p>
+                  Accelerate development of AI, server, edge, networking &
+                  storage SoCs.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <div>
+                <h5>Mobile/5G</h5>
+                <p>Unleash bandwidth and harness security for a 5G world.</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fa-solid fa-car"></i>
+              <div>
+                <h5>Automotive</h5>
+                <p>
+                  Accelerate innovation in automotive SoCs, safety & connected
+                  systems.
+                </p>
+              </div>
+            </div>
+            <!-- NEW: Aerospace & Government -->
+            <div class="feature">
+              <i class="fa-solid fa-jet-fighter-up"></i>
+              <div>
+                <h5>Aerospace & Government Solutions</h5>
+                <p>
+                  Aerospace & Government — secure, high-performance systems for
+                  defense, research, and innovation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technology Column -->
+          <div class="col-md-6">
+            <h2 class="section-title">Technology</h2>
+
+            <div class="feature">
+              <i class="fa-solid fa-brain"></i>
+              <div>
+                <h5>Artificial Intelligence (AI)</h5>
+                <p>
+                  Increase silicon performance & accelerate innovation with AI
+                  solutions.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fa-solid fa-layer-group"></i>
+              <div>
+                <h5>Multi-Die</h5>
+                <p>
+                  A comprehensive solution for fast heterogeneous integration.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fa-solid fa-bolt"></i>
+              <div>
+                <h5>Energy-Efficient Design</h5>
+                <p>
+                  End-to-end solution for low power design, verification & IP.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <i class="fa-solid fa-memory"></i>
+              <div>
+                <h5>Memory</h5>
+                <p>
+                  Enhance memory performance, validation & scalability with
+                  modern IPs.
+                </p>
+              </div>
+            </div>
+            <!-- NEW: Cloud Solutions -->
+            <div class="feature">
+              <i class="fa-solid fa-cloud"></i>
+              <div>
+                <h5>Cloud Solutions</h5>
+                <p>
+                  Fast, secure & efficient path to accelerate your cloud
+                  journey.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </section>
+    <!-- types images at a line -->
+    <section>
+      <div class="panel-container">
+        <div class="panel">
+          <img
+            src="https://wallpaperaccess.com/full/16882076.jpg"
+            alt="Synopsys AI"
+          />
+          <div class="overlay">
+            <h2>AI Technology</h2>
+            <p>AI-driven design automation for next-gen chips and systems.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <img
+            src="https://image5.slideserve.com/9522999/layout-of-inverter-l.jpg"
+            alt="CMOC"
+          />
+          <div class="overlay">
+            <h2>CMOS</h2>
+            <p>
+              fundamental building block in VLSI (Very Large Scale Integration)
+              design, enabling the creation of highly efficient and compact
+              integrated circuits.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <img
+            src="https://img.freepik.com/premium-photo/schematic-diagram-gpu-chip-network-security-ai-concept-chip-design-gpu-network-security-ai-schematic-diagram_918839-213074.jpg"
+            alt="EDA"
+          />
+          <div class="overlay">
+            <h2>EDA</h2>
+            <p>
+              Electronic Design Automation tools for chip layout and simulation.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <img
+            src="https://img.freepik.com/premium-photo/abstract-electronic-circuit-board-clean-flat_1254594-44.jpg"
+            alt="Systems"
+          />
+          <div class="overlay">
+            <h2>Systems</h2>
+            <p>
+              Integrated system-level design for performance and scalability.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <img
+            src="https://cdn8.dissolve.com/p/D538_414_026/D538_414_026_1200.jpg"
+            alt="Silicon IP"
+          />
+          <div class="overlay">
+            <h2>Silicon IP</h2>
+            <p>
+              Reusable intellectual property blocks for silicon chip design.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br /><br /><br />
+    <section>
+      <center>
+        <center><h1 id="Contact">GET IN TECH</h1></center>
+        <div class="container-box">
+          <div class="card text-dark">
+            <h3 class="text-center mb-4">Contact Us</h3>
+            <form id="contactForm">
+              <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Contact Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  maxlength="10"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                Send Message
+              </button>
+            </form>
+            <div id="status" class="mt-3 text-center"></div>
+          </div>
+
+          <div class="info-box">
+            <div class="info-box-content" style="color: black">
+              <!-- <p><i class="bi bi-telephone-fill"></i> +91 96200 00963</p> -->
+              <!-- <h4><i class="bi bi-shield-lock-fill"></i> Contact Info</h4> -->
+
+              <!-- <p><i class="bi bi-envelope-fill"></i> enquire@maven-silicon.com</p>
+          <p><i class="bi bi-lock-fill"></i> Secure & Private</p> -->
+            </div>
+          </div>
+        </div>
+
+        <script>
+          const SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbzs0hW5JykoClXBUaHVbLLQ9mcAJZ9BMI6dvEFfK-S75hNQXIRSxsQxW5tTT5Ar7Zc7/exec";
+
+          document
+            .getElementById("contactForm")
+            .addEventListener("submit", async (e) => {
+              e.preventDefault();
+              const status = document.getElementById("status");
+              status.innerHTML = "⏳ Sending...";
+
+              const formData = new FormData();
+              formData.append("name", document.getElementById("name").value);
+              formData.append("email", document.getElementById("email").value);
+              formData.append("phone", document.getElementById("phone").value);
+              formData.append(
+                "message",
+                document.getElementById("message").value
+              );
+
+              try {
+                const res = await fetch(SCRIPT_URL, {
+                  method: "POST",
+                  body: formData,
+                });
+                const data = await res.json();
+                if (data.ok) {
+                  status.innerHTML = "✅ Message Sent Successfully!";
+                  document.getElementById("contactForm").reset();
+                } else {
+                  status.innerHTML = "❌ Failed: " + data.error;
+                }
+              } catch (err) {
+                status.innerHTML = "⚠️ Network Error: " + err.message;
+              }
+            });
+        </script>
+      </center>
+    </section>
+
+    <!-- ===== Logos Section ===== -->
+    <section class="logos">
+      <img
+        src="./75-755392_icon-digital-electronics-logo-hd-png-download.png"
+        alt="multi sim"
+      />
+      <img
+        src="https://logowik.com/content/uploads/images/mentor-graphics7955.logowik.com.webp"
+        alt=" mentor graphics"
+      />
+      <img src="./logo 1.png" alt="multi sim" />
+      <img src="./logo 2.png" alt="multi sim" />
+      <img src="./logo 3.png" alt="multi sim" />
+      <img src="./logo 4.png" alt="multi sim" />
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/226/226777.png"
+        alt="Java"
+      />
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png"
+        alt="Bootstrap"
+      />
+    </section>
+    <!-- STATS ======number printing ======= -->
+    <section class="stats-section">
+      <div class="container">
+        <h2 class="mb-4 text-primary">
+          <i class="bi bi-bar-chart-fill"></i> Institute Statistics Dashboard
+        </h2>
+
+        <div class="row g-4">
+          <!-- Total Students -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <i class="bi bi-people-fill display-5 text-success"></i>
+              <div class="number" id="totalStudents">0</div>
+              <h5>Total Students</h5>
+            </div>
+          </div>
+
+          <!-- Total Batches -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <i class="bi bi-folder-fill display-5 text-warning"></i>
+              <div class="number" id="totalBatches">0</div>
+              <h5>Total Batches</h5>
+            </div>
+          </div>
+
+          <!-- Years Active -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <i class="bi bi-award-fill display-5 text-danger"></i>
+              <div class="number" id="yearsActive">0</div>
+              <h5>Institute Years</h5>
+            </div>
+          </div>
+
+          <!-- Days Active -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <i class="bi bi-calendar2-date-fill display-5 text-primary"></i>
+              <div class="number" id="daysActive">0</div>
+              <h5>Days Since Started</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const WEB_APP_URL =
+          "https://script.google.com/macros/s/AKfycbyxTzxoSMZgREYy5gM0I1G2jsYuoHZPZqaURHmRfMNdvneW6O14ef4e50Gvgrd0ifRTTQ/exec";
+
+        // 🟦 YOUR INSTITUTE START DATE
+        const instituteStartDate = new Date("2024-01-01");
+
+        async function apiCall(action, params = {}) {
+          params.action = action;
+          const resp = await fetch(WEB_APP_URL, {
+            method: "POST",
+            body: new URLSearchParams(params),
+          });
+          return resp.json();
+        }
+
+        function loadStats() {
+          // ------- Load batches and students -------
+          apiCall("listBatches").then((res) => {
+            const batches = res.batches.length;
+            let students = 0;
+
+            res.batches.forEach((b) => {
+              students += b.emails.split(",").filter((e) => e.trim()).length;
+            });
+
+            document.getElementById("totalStudents").textContent = students;
+            document.getElementById("totalBatches").textContent = batches;
+          });
+
+          // -------------------------------------------------
+          // UPDATED: PERFECT AUTO CALC YEARS + DAYS SYSTEM
+          // -------------------------------------------------
+          const today = new Date();
+          const timeDiff = today - instituteStartDate;
+
+          let totalDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+          let years = Math.floor(totalDays / 365);
+          let remainingDays = totalDays % 365;
+
+          // AUTO update DOM
+          document.getElementById("yearsActive").textContent = years;
+          document.getElementById("daysActive").textContent = remainingDays;
+        }
+
+        loadStats();
+      </script>
+    </section>
+    <br /><br /><br />
+
+    <!-- ===== Footer ===== -->
+    <footer>
+      <div class="footer-row">
+        <!-- Left: Address -->
+        <div class="footer-col">
+          <h5><i class="bi bi-geo-alt"></i> Address</h5>
+          <p>
+            suresh tech institute, G B Play ,Housr Road , Bengalure, karnataka,
+            India
+          </p>
+        </div>
+
+        <!-- Center: Contact -->
+        <div class="footer-col text-center">
+          <h5><i class="bi bi-telephone"></i> Contact</h5>
+          <p>
+            Email: <a href="mailto:info@sureshtech.com">info@sureshtech.com</a>
+          </p>
+          <p>Phone: +91 7997739198</p>
+          <p>WhatsApp: +91 7997739198</p>
+        </div>
+
+        <!-- Right: Social -->
+        <div class="footer-col text-end">
+          <h5><i class="bi bi-share"></i> Follow Us</h5>
+          <div class="social-icons">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© 2025 KPDBC Tech. All rights reserved.</div>
+    </footer>
+  </body>
+</html>
+
+<!--  working -->

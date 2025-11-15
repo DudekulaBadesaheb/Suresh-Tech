@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Suresh Tech — VLSI Course</title>
+
+    <!-- Bootstrap (fast CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Icons & Font -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./suresh tech logo.png" />
+
+    <meta
+      name="description"
+      content="VLSI course — full core topics with simple explanations. Beginner → Advanced roadmap. Suresh Tech Institute"
+    />
+    <style>
+      :root {
+        --brand: #0077ff;
+        --muted: #6c757d;
+        --card-bg: #ffffff;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(180deg, #f8fbff 0, #ffffff 60%);
+        color: #1b1b1b;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Header */
+      .navbar {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(6px);
+      }
+      .brand {
+        font-weight: 700;
+        color: var(--brand);
+        letter-spacing: 0.3px;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 80px 0 40px;
+        text-align: center;
+      }
+      .hero .title {
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: #07203a;
+      }
+      .hero .subtitle {
+        color: var(--muted);
+        margin-top: 10px;
+        font-size: 1.05rem;
+      }
+
+      /* Course cards */
+      .feature {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 22px;
+        box-shadow: 0 8px 22px rgba(19, 37, 69, 0.06);
+        height: 100%;
+      }
+
+      /* Accordion style */
+      .accordion-button:not(.collapsed) {
+        color: #07203a;
+        background: linear-gradient(
+          90deg,
+          rgba(0, 119, 255, 0.08),
+          rgba(0, 195, 255, 0.04)
+        );
+        box-shadow: none;
+      }
+
+      .topic-title {
+        font-weight: 600;
+        color: #07324a;
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      /* CTA */
+      .cta {
+        background: linear-gradient(90deg, var(--brand), #00c3ff);
+        color: #fff;
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 119, 255, 0.12);
+      }
+
+      footer {
+        padding: 30px 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-align: center;
+      }
+      @media (max-width: 768px) {
+        .hero .title {
+          font-size: 1.8rem;
+        }
+      }
+      /* top scrol button */
+      .top-btn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #0d6efd;
+        color: white;
+        border-radius: 50%;
+        padding: 12px 15px;
+        font-size: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand brand" href="./index.html"
+          ><em>Suresh Tech Institute</em></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html"><em>Home</em></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#topics"><em>Topics</em></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#curriculum"><em>Curriculum</em></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-outline-primary ms-2"
+                href="./contact.html"
+                ><em>Enroll Now</em></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center gx-5">
+          <div class="col-lg-7 text-lg-start text-center">
+            <h1 class="title"><em>VLSI & Testing Course — Core Topics</em></h1>
+            <p class="subtitle">
+              Learn Digital design, CMOS, Verilog, ASIC/FPGA flow, physical
+              design, power & testability — from basics to interview-ready.
+            </p>
+            <div
+              class="d-flex gap-2 justify-content-center justify-content-lg-start mt-4"
+            >
+              <a href="#topics" class="btn btn-primary btn-lg">VLSI Topics</a>
+              <a
+                href="./vlasi testing.html"
+                class="btn btn-outline-secondary btn-lg"
+                >Testing
+              </a>
+            </div>
+            <!-- <div class="mt-4 muted small">
+              Format: Short lessons • Hands-on examples • Project ideas •
+              Interview tips
+            </div> -->
+          </div>
+
+          <div class="col-lg-5 mt-4 mt-lg-0">
+            <div class="feature">
+              <h5 class="mb-3">Why this course?</h5>
+              <ul class="mb-0">
+                <li>
+                  <strong>Practical</strong> — Verilog examples & mini projects
+                </li>
+                <li><strong>Compact</strong> — Core topics explained simply</li>
+                <li>
+                  <strong>Interview-ready</strong> — Questions & roadmap
+                  included
+                </li>
+              </ul>
+              <div class="mt-3 cta">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold">Start Learning VLSI</div>
+                    <div class="small">Beginner → Professional track</div>
+                  </div>
+                  <div>
+                    <a href="./contact.html" class="btn btn-light btn-sm"
+                      >Enroll</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- feature -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="py-4">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="feature">
+              <h6 class="topic-title">Course Length</h6>
+              <p class="muted mb-0">
+                16–20 weeks (self-paced / instructor-led options)
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="feature">
+              <h6 class="topic-title">Who is it for?</h6>
+              <p class="muted mb-0">
+                ECE/EE/CS students, freshers, engineers seeking VLSI roles.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="feature">
+              <h6 class="topic-title">Outcome</h6>
+              <p class="muted mb-0">
+                Build RTL designs, simulate Verilog, understand ASIC/FPGA flows
+                and physical design basics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICS ACCORDION -->
+    <section id="topics" class="py-5">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-lg-8">
+            <h3>Core Topics — Brief & Simple Explanations</h3>
+            <p class="muted">
+              Click a topic to expand the short explanation. Start from the top
+              if you're new.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion" id="vlsiAccordion">
+          <!-- 1 Digital Electronics Basics -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h1">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c1"
+              >
+                1. Digital Electronics Basics
+              </button>
+            </h2>
+            <div
+              id="c1"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                <strong>Logic gates</strong> (AND, OR, NOT, NAND, NOR, XOR) are
+                the basic building blocks. <br />
+                <strong>Boolean algebra</strong> gives rules to simplify logic.
+                <strong>Karnaugh maps</strong> (K-maps) help reduce expressions.
+                <br />
+                <strong>Combinational circuits</strong> (e.g., adders, MUX)
+                depend only on inputs.
+                <strong>Sequential circuits</strong> (flip-flops, counters)
+                store state.
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 CMOS Technology -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h2">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c2"
+              >
+                2. CMOS Technology
+              </button>
+            </h2>
+            <div
+              id="c2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                CMOS uses complementary PMOS and NMOS transistors. A CMOS
+                inverter flips input to output with very low static power. CMOS
+                is dominant because of low-power and high density.
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 MOSFET Fundamentals -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h3">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c3"
+              >
+                3. MOSFET Fundamentals
+              </button>
+            </h2>
+            <div
+              id="c3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                MOSFET is the transistor used in CMOS. Know
+                <em>cutoff, linear, saturation</em> regions and threshold
+                voltage (Vth). These determine switching and analog behaviour.
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Fabrication Process -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h4">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c4"
+              >
+                4. Fabrication Process (Chip Manufacturing)
+              </button>
+            </h2>
+            <div
+              id="c4"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Fabrication steps: oxidation → photolithography → etching →
+                doping → metal deposition → packaging. These steps create
+                transistor patterns on silicon wafers.
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 VLSI Design Flow -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h5">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c5"
+              >
+                5. VLSI Design Flow
+              </button>
+            </h2>
+            <div
+              id="c5"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Flow: spec → RTL (Verilog/VHDL) → verification → synthesis →
+                floorplanning → placement & routing → timing & DRC/LVS →
+                tape-out. Each step converts design closer to silicon.
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 Verilog HDL -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h6">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c6"
+              >
+                6. Verilog HDL
+              </button>
+            </h2>
+            <div
+              id="c6"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Verilog is used for RTL design and testbenches. Learn module
+                syntax, always blocks, assign, blocking (=) vs non-blocking
+                (<=), and writing testbenches to simulate behavior.
+              </div>
+            </div>
+          </div>
+
+          <!-- 7 FPGA Basics -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h7">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c7"
+              >
+                7. FPGA Basics
+              </button>
+            </h2>
+            <div
+              id="c7"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                FPGA = programmable logic (LUTs, FFs, routing). Use for
+                prototyping, hardware acceleration, and real-time systems.
+                Synthesis maps RTL to FPGA primitives.
+              </div>
+            </div>
+          </div>
+
+          <!-- 8 ASIC Basics -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h8">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c8"
+              >
+                8. ASIC Basics
+              </button>
+            </h2>
+            <div
+              id="c8"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                ASICs are custom chips for a specific task. Types: full-custom,
+                semi-custom, standard-cell. ASIC gives best performance & area
+                but costs more to design/fabricate.
+              </div>
+            </div>
+          </div>
+
+          <!-- 9 Timing Analysis -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h9">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c9"
+              >
+                9. Timing Analysis
+              </button>
+            </h2>
+            <div
+              id="c9"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Key terms: <strong>setup time</strong>,
+                <strong>hold time</strong>, <strong>clock skew</strong>, and
+                <strong>slack</strong>. Static timing analysis checks whether
+                design meets clock speed.
+              </div>
+            </div>
+          </div>
+
+          <!-- 10 Physical Design -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h10">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c10"
+              >
+                10. Physical Design
+              </button>
+            </h2>
+            <div
+              id="c10"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Physical tasks: floorplanning, placement, clock tree synthesis,
+                routing, and layout checks (DRC/LVS). This turns gates & nets
+                into physical silicon layout.
+              </div>
+            </div>
+          </div>
+
+          <!-- 11 Power & Area Optimization -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h11">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c11"
+              >
+                11. Power & Area Optimization
+              </button>
+            </h2>
+            <div
+              id="c11"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Reduce power with clock gating, power gating, multi-Vth; reduce
+                area with logic restructuring and cell sizing. Balance
+                performance vs power vs area.
+              </div>
+            </div>
+          </div>
+
+          <!-- 12 Low Power VLSI -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h12">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c12"
+              >
+                12. Low Power VLSI
+              </button>
+            </h2>
+            <div
+              id="c12"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Techniques: dynamic power reduction (lower switching), leakage
+                reduction, DVFS (voltage & frequency scaling), and power
+                islands. Important for mobile & edge chips.
+              </div>
+            </div>
+          </div>
+
+          <!-- 13 DFT -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h13">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c13"
+              >
+                13. DFT (Design for Testability)
+              </button>
+            </h2>
+            <div
+              id="c13"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Make chips testable: scan chains, ATPG (automatic test pattern
+                generation), and BIST (built-in self-test). DFT reduces
+                manufacturing defects left undetected.
+              </div>
+            </div>
+          </div>
+
+          <!-- 14 Memory Design -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h14">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c14"
+              >
+                14. Memory Design (SRAM/DRAM/ROM)
+              </button>
+            </h2>
+            <div
+              id="c14"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                SRAM: fast cache-like memory; DRAM: denser but needs refresh;
+                ROM: read-only storage. Memory design involves bitcell, sense
+                amps, and timing constraints.
+              </div>
+            </div>
+          </div>
+
+          <!-- 15 Analog VLSI -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="h15">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c15"
+              >
+                15. Analog VLSI (Op-amps, ADC/DAC, PLL)
+              </button>
+            </h2>
+            <div
+              id="c15"
+              class="accordion-collapse collapse"
+              data-bs-parent="#vlsiAccordion"
+            >
+              <div class="accordion-body">
+                Analog blocks include op-amps, ADC/DAC for conversion, and PLLs
+                for clock generation. Analog design uses continuous-time
+                transistor models and careful layout.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- accordion -->
+      </div>
+    </section>
+
+    <!-- CURRICULUM & ROADMAP -->
+    <section id="curriculum" class="py-5 bg-white">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <h4>Practical Curriculum & Roadmap</h4>
+            <ol class="muted">
+              <li>Start: Digital basics → CMOS → MOS operation</li>
+              <li>Learn Verilog: combinational & sequential examples</li>
+              <li>FPGA prototyping: synthesize & run on board</li>
+              <li>ASIC flow: synthesis → P&R → timing → DRC/LVS</li>
+              <li>Physical design fundamentals & basic sign-off checks</li>
+              <li>DFT basics, power optimization & memory modules</li>
+              <li>
+                Mini-project: Design a small processor / peripheral or custom
+                accelerator
+              </li>
+            </ol>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="feature">
+              <h6 class="topic-title">Interview Prep</h6>
+              <p class="muted mb-1">
+                Shortlist: Verilog coding, timing, CMOS inverter, transistor
+                regions, DFT basics, and basic physical design terms.
+              </p>
+              <h6 class="topic-title mt-3">Project Ideas</h6>
+              <ul class="muted mb-0">
+                <li>RTL UART + Testbench</li>
+                <li>Simple RISC datapath (mini-processor)</li>
+                <li>SRAM bitcell & sense amp simulation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENROLL -->
+    <section id="enroll" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center gx-4">
+          <div class="col-md-8">
+            <div class="feature text-center">
+              <h4>Ready to Start?</h4>
+              <p class="muted">
+                Join the practical VLSI course at Suresh Tech Institute.
+                Hands-on labs, Verilog practice, and job guidance.
+              </p>
+              <div class="d-flex justify-content-center gap-2">
+                <a href="./contact.html" class="btn btn-primary"
+                  >Contact / Enroll</a
+                >
+                <!-- <a href="#" class="btn btn-outline-secondary"
+                  >Download Course PDF</a
+                > -->
+              </div>
+              <p class="mt-3 small muted">
+                Want a custom curriculum or corporate training? Contact us.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Suresh Tech Institute • VLSI Course — Simple Explanations • Made
+      with ♥
+    </footer>
+    <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="top-btn">
+      <i class="bi bi-arrow-up-circle-fill"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

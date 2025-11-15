@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sureshtech Admin Portal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./suresh tech logo.png" />
+
+    <style>
+      body {
+        padding: 20px;
+        background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+      }
+      .batch-card {
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 10px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      }
+      .batch-card:hover {
+        background: #dee2e6;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      }
+      .post-card {
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      }
+      .email-badge {
+        margin: 2px;
+      }
+      .post-card button {
+        margin-right: 5px;
+      }
+      @media (max-width: 768px) {
+        .batch-card {
+          margin-bottom: 10px;
+        }
+      }
+      #loginSection {
+        max-width: 400px;
+        margin: 100px auto;
+      }
+      /* top scrol button */
+      .top-btn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #0d6efd;
+        color: white;
+        border-radius: 50%;
+        padding: 12px 15px;
+        font-size: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 🔐 Login Section -->
+    <div id="loginSection" class="card p-4 shadow">
+      <h4 class="text-center mb-3">
+        <i class="bi bi-box-arrow-in-right"></i> Admin Login
+      </h4>
+      <input
+        type="email"
+        id="loginEmail"
+        class="form-control mb-2"
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        id="loginPassword"
+        class="form-control mb-3"
+        placeholder="Password"
+      />
+      <button class="btn btn-primary w-100" onclick="login()">
+        <i class="bi bi-door-open"></i> Login
+      </button>
+    </div>
+
+    <!-- 🔧 Admin Panel -->
+    <div id="adminSection" style="display: none">
+      <div class="container">
+        <h2
+          class="mb-4 text-primary d-flex justify-content-between align-items-center"
+        >
+          <span
+            ><i class="bi bi-people-fill"></i> Suresh Tech Admin Portal</span
+          >
+          <button class="btn btn-outline-danger btn-sm" onclick="logout()">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+        </h2>
+
+        <!-- Create Batch -->
+        <div class="card mb-4 p-3 shadow-sm">
+          <h5><i class="bi bi-plus-circle"></i> Create New Batch</h5>
+          <div class="mb-2">
+            <input
+              type="text"
+              id="batchName"
+              class="form-control mb-2"
+              placeholder="Batch Name"
+            />
+            <input
+              type="text"
+              id="batchEmails"
+              class="form-control mb-2"
+              placeholder="Student Emails (comma separated)"
+            />
+            <button class="btn btn-primary" onclick="createBatch()">
+              <i class="bi bi-check-lg"></i> Create Batch
+            </button>
+          </div>
+        </div>
+
+        <!-- List Batches -->
+        <div>
+          <h5><i class="bi bi-card-list"></i> All Batches</h5>
+          <div id="batchesList" class="row gy-3"></div>
+        </div>
+
+        <!-- Batch Details -->
+        <div id="batchDetails" class="mt-4" style="display: none">
+          <h5>
+            <i class="bi bi-folder2-open"></i> Batch:
+            <span id="currentBatchName"></span>
+          </h5>
+          <p><i class="bi bi-envelope"></i> Students:</p>
+          <div id="studentEmails" class="mb-2"></div>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              id="newEmail"
+              class="form-control"
+              placeholder="Add student email"
+            />
+            <button class="btn btn-success" onclick="addStudent()">
+              <i class="bi bi-person-plus"></i> Add
+            </button>
+          </div>
+
+          <!-- Upload File / Link -->
+          <div class="card mb-3 p-3 shadow-sm">
+            <h6><i class="bi bi-upload"></i> Upload File, Video, or Link</h6>
+            <input
+              type="text"
+              id="postTitle"
+              class="form-control mb-2"
+              placeholder="Title"
+            />
+            <input
+              type="text"
+              id="postDesc"
+              class="form-control mb-2"
+              placeholder="Description"
+            />
+            <input
+              type="text"
+              id="postUrl"
+              class="form-control mb-2"
+              placeholder="URL (for links)"
+            />
+            <select id="postCategory" class="form-select mb-2">
+              <option>Other</option>
+              <option>Document</option>
+              <option>Photo</option>
+              <option>Video</option>
+              <option>Live Class</option>
+              <option>Test</option>
+            </select>
+            <input
+              type="file"
+              id="postFile"
+              class="form-control mb-2"
+              accept="*"
+            />
+            <button class="btn btn-success" onclick="uploadPost()">
+              <i class="bi bi-cloud-upload"></i> Upload
+            </button>
+          </div>
+
+          <!-- Posts -->
+          <h6><i class="bi bi-journal-text"></i> Posts</h6>
+          <div id="postsList"></div>
+        </div>
+      </div>
+    </div>
+    <!-- BACK TO TOP BUTTON -->
+    <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="top-btn">
+      <i class="bi bi-arrow-up-circle-fill"></i>
+    </div>
+
+    <script>
+      const WEB_APP_URL =
+        "https://script.google.com/macros/s/AKfycbyxTzxoSMZgREYy5gM0I1G2jsYuoHZPZqaURHmRfMNdvneW6O14ef4e50Gvgrd0ifRTTQ/exec";
+
+      let currentBatchId = "";
+      let currentBatchEmails = [];
+
+      // Login
+      function login() {
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+
+        if (
+          email === "kpdbcsolution@zohomail.in" &&
+          password === "kpdbcsolutions"
+        ) {
+          localStorage.setItem("loggedIn", "true");
+          document.getElementById("loginSection").style.display = "none";
+          document.getElementById("adminSection").style.display = "block";
+          loadBatches();
+        } else {
+          alert("Invalid credentials");
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem("loggedIn");
+        location.reload();
+      }
+
+      if (localStorage.getItem("loggedIn") === "true") {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("adminSection").style.display = "block";
+        loadBatches();
+      }
+
+      // API Helper
+      async function apiCall(action, params = {}) {
+        params.action = action;
+        const resp = await fetch(WEB_APP_URL, {
+          method: "POST",
+          body: new URLSearchParams(params),
+        });
+        return resp.json();
+      }
+
+      function createBatch() {
+        const name = document.getElementById("batchName").value;
+        const emails = document.getElementById("batchEmails").value;
+        if (!name || !emails) return alert("Enter name & emails");
+        apiCall("createBatch", { name, emails, createdBy: "Admin" }).then(
+          (res) => {
+            if (res.ok) {
+              alert("Batch created");
+              loadBatches();
+            } else alert(res.error);
+          }
+        );
+      }
+
+      function loadBatches() {
+        apiCall("listBatches").then((res) => {
+          const container = document.getElementById("batchesList");
+          container.innerHTML = "";
+          res.batches.forEach((b) => {
+            const div = document.createElement("div");
+            div.className = "col-md-4";
+            div.innerHTML = `<div class="batch-card p-3 bg-white" onclick="showBatch('${
+              b.batchId
+            }','${b.name}','${b.emails}')">
+              <h6><i class="bi bi-folder-fill"></i> ${b.name}</h6>
+              <p><i class="bi bi-people"></i> ${
+                b.emails.split(",").length
+              } students</p>
+            </div>`;
+            container.appendChild(div);
+          });
+        });
+      }
+
+      function showBatch(id, name, emails) {
+        currentBatchId = id;
+        currentBatchEmails = emails
+          .split(",")
+          .map((e) => e.trim())
+          .filter(Boolean);
+        document.getElementById("currentBatchName").innerText = name;
+        document.getElementById("batchDetails").style.display = "block";
+        renderStudentEmails();
+        loadPosts();
+      }
+
+      function renderStudentEmails() {
+        const container = document.getElementById("studentEmails");
+        container.innerHTML = "";
+        currentBatchEmails.forEach((email) => {
+          const span = document.createElement("span");
+          span.className = "badge bg-info text-dark email-badge";
+          span.innerHTML = `${email} <i class="bi bi-x-circle" style="cursor:pointer" onclick="removeStudent('${email}')"></i>`;
+          container.appendChild(span);
+        });
+      }
+
+      function addStudent() {
+        const email = document.getElementById("newEmail").value.trim();
+        if (!email) return alert("Enter email");
+        if (currentBatchEmails.includes(email)) return alert("Already exists");
+        currentBatchEmails.push(email);
+        updateBatchEmails();
+      }
+
+      function removeStudent(email) {
+        currentBatchEmails = currentBatchEmails.filter((e) => e !== email);
+        updateBatchEmails();
+      }
+
+      function updateBatchEmails() {
+        apiCall("updateBatchEmails", {
+          batchId: currentBatchId,
+          emails: currentBatchEmails.join(","),
+        }).then((res) => {
+          if (res.ok) {
+            renderStudentEmails();
+            loadBatches();
+          } else alert(res.error);
+        });
+      }
+
+      function uploadPost() {
+        const title = document.getElementById("postTitle").value;
+        const desc = document.getElementById("postDesc").value;
+        const category = document.getElementById("postCategory").value;
+        const url = document.getElementById("postUrl").value;
+        const file = document.getElementById("postFile").files[0];
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const filedata = e.target.result.split(",")[1];
+            apiCall("uploadFile", {
+              batchId: currentBatchId,
+              title,
+              description: desc,
+              category,
+              filedata,
+              filename: file.name,
+              mimetype: file.type,
+              createdBy: "Admin",
+            }).then((res) => {
+              if (res.ok) {
+                alert("Uploaded");
+                loadPosts();
+              } else alert(res.error);
+            });
+          };
+          reader.readAsDataURL(file);
+        } else if (url) {
+          apiCall("saveLink", {
+            batchId: currentBatchId,
+            title,
+            description: desc,
+            category,
+            url,
+            createdBy: "Admin",
+          }).then((res) => {
+            if (res.ok) {
+              alert("Link saved");
+              loadPosts();
+            } else alert(res.error);
+          });
+        } else alert("Select file or enter link");
+      }
+
+      function loadPosts() {
+        apiCall("getPostsByBatch", { batchId: currentBatchId }).then((res) => {
+          const container = document.getElementById("postsList");
+          container.innerHTML = "";
+          res.posts.forEach((p) => {
+            const div = document.createElement("div");
+            div.className = "post-card";
+            div.innerHTML = `
+              <h6><i class="bi bi-file-earmark-text"></i> ${p.title} (${
+              p.category
+            })</h6>
+              <p>${p.description}</p>
+              ${
+                p.driveUrl
+                  ? `<a href="${p.driveUrl}" target="_blank"><i class="bi bi-link-45deg"></i> View</a>`
+                  : p.url
+                  ? `<a href="${p.url}" target="_blank"><i class="bi bi-link-45deg"></i> Link</a>`
+                  : ""
+              }
+              <br><small><i class="bi bi-person-circle"></i> ${p.createdBy} | ${
+              p.createdAt
+            }</small><br>
+              <button class="btn btn-sm btn-primary" onclick="editPostPrompt('${
+                p.postId
+              }','${p.title}','${p.description}','${p.category}','${
+              p.driveUrl || p.url || ""
+            }')">
+                <i class="bi bi-pencil-square"></i> Edit
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="deletePost('${
+                p.postId
+              }')">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            `;
+            container.appendChild(div);
+          });
+        });
+      }
+
+      function editPostPrompt(postId, title, desc, category, url) {
+        const newTitle = prompt("Edit title", title);
+        const newDesc = prompt("Edit description", desc);
+        const newCat = prompt("Edit category", category);
+        const newUrl = prompt("Edit URL", url);
+        apiCall("editPost", {
+          postId,
+          title: newTitle,
+          description: newDesc,
+          category: newCat,
+          url: newUrl,
+        }).then((res) => {
+          if (res.ok) loadPosts();
+          else alert(res.error);
+        });
+      }
+
+      function deletePost(postId) {
+        if (confirm("Delete this post?")) {
+          apiCall("deletePost", { postId }).then((res) => {
+            if (res.ok) loadPosts();
+            else alert(res.error);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suresh Tech Student Portal</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="./suresh tech logo.png" />
+
+    <!-- Google Font & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --main-bg: #f4f9ff;
+        --text-color: #333;
+        --card-bg: #fff;
+      }
+
+      body.dark-mode {
+        --main-bg: #121212;
+        --text-color: #f4f4f4;
+        --card-bg: #1e1e1e;
+      }
+
+      body {
+        background: var(--main-bg);
+        font-family: "Poppins", sans-serif;
+        color: var(--text-color);
+        padding: 20px;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      .container {
+        max-width: 950px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        text-align: center;
+        font-weight: 700;
+        color: #007bff;
+        margin-bottom: 25px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 20px;
+        border: none;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+      }
+
+      .card:hover {
+        transform: scale(1.01);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .category-badge {
+        border-radius: 8px;
+        padding: 4px 10px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #fff;
+      }
+
+      .cat-Video {
+        background: #e74c3c;
+      }
+
+      .cat-Document {
+        background: #2ecc71;
+      }
+
+      .cat-Image {
+        background: #f39c12;
+      }
+
+      .cat-LiveClass {
+        background: #9b59b6;
+      }
+
+      .cat-Test {
+        background: #3498db;
+      }
+
+      #content h4 {
+        border-bottom: 3px solid #007bff;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+      }
+
+      #userInfo {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        z-index: 10;
+        display: none;
+      }
+
+      .user-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #007bff, #00aaff);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 8px 14px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .user-btn:hover {
+        background: linear-gradient(135deg, #0056b3, #007bff);
+      }
+
+      .user-circle {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: white;
+        color: #007bff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      @media (max-width: 768px) {
+        .user-btn span {
+          display: none;
+        }
+      }
+      /* top scrol button */
+      .top-btn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #0d6efd;
+        color: white;
+        border-radius: 50%;
+        padding: 12px 15px;
+        font-size: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 👤 User Info -->
+    <div id="userInfo">
+      <div class="dropdown">
+        <button
+          class="user-btn dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <div class="user-circle" id="userInitial">A</div>
+          <span id="userName">User</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <a class="dropdown-item" href="#" id="logoutBtn">
+              <i class="fa-solid fa-right-from-bracket text-danger"></i> Logout
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" id="switchBtn">
+              <i class="fa-solid fa-user-plus text-primary"></i> Login New User
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" id="themeToggle">
+              <i class="fa-solid fa-moon text-warning"></i> Toggle Theme
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>🎓 Suresh Tech Student Portal</h2>
+
+      <!-- 🔐 Login Form -->
+      <div class="card mb-4" id="loginSection">
+        <h5 class="mb-3"><i class="fa-solid fa-lock"></i> Login</h5>
+        <input
+          id="name"
+          type="text"
+          class="form-control mb-3"
+          placeholder="Enter your name"
+          required
+        />
+        <input
+          id="email"
+          type="email"
+          class="form-control mb-3"
+          placeholder="Enter your registered email"
+          required
+        />
+        <input
+          id="mobile"
+          type="text"
+          class="form-control mb-3"
+          placeholder="Enter your mobile number"
+          required
+        />
+        <button id="loginBtn" class="btn btn-primary w-100">
+          <i class="fa-solid fa-right-to-bracket"></i> Login
+        </button>
+      </div>
+
+      <div id="content"></div>
+    </div>
+    <!-- BACK TO TOP BUTTON -->
+    <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="top-btn">
+      <i class="bi bi-arrow-up-circle-fill"></i>
+    </div>
+
+    <script>
+      // 🔹 Existing (Old) Web App URL — For posts, videos, etc.
+      const WEB_APP_URL =
+        "https://script.google.com/macros/s/AKfycbz9dSfb8gEIBtPLKLAV5R_N22cmjmtnc9jQPOInf5EhCzKB5eA1kaXVE5YEBQCnoLxO6Q/exec";
+
+      // 🔹 New Web App URL — For registration (Google Sheet + Email)
+      const REGISTER_APP_URL =
+        "https://script.google.com/macros/s/AKfycbwtJZ5ix9j1iOcoOg1Tp8xh9VgM7TJOgU4Jfsj5GA7QFbLuoublEtQZxDXt8uBE5GCc/exec";
+
+      const loginSection = document.getElementById("loginSection");
+      const userInfo = document.getElementById("userInfo");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const switchBtn = document.getElementById("switchBtn");
+      const content = document.getElementById("content");
+      const themeToggle = document.getElementById("themeToggle");
+
+      // 🟢 Auto-login
+      window.onload = () => {
+        const savedUser = JSON.parse(localStorage.getItem("kpdbc_user"));
+        const darkMode = localStorage.getItem("kpdbc_dark") === "true";
+        if (darkMode) document.body.classList.add("dark-mode");
+        if (savedUser) {
+          showUser(savedUser);
+          fetchUserData(savedUser.email);
+        }
+      };
+
+      // 🔐 Login + Registration save
+      document
+        .getElementById("loginBtn")
+        .addEventListener("click", async () => {
+          const name = document.getElementById("name").value.trim();
+          const email = document
+            .getElementById("email")
+            .value.trim()
+            .toLowerCase();
+          const mobile = document.getElementById("mobile").value.trim();
+          if (!name || !email || !mobile)
+            return alert("Please fill all fields.");
+
+          try {
+            // 🔸 Save registration to Google Sheet + send confirmation email
+            const form = new URLSearchParams();
+            form.append("action", "registerUser");
+            form.append("name", name);
+            form.append("email", email);
+            form.append("mobile", mobile);
+
+            const res = await fetch(REGISTER_APP_URL, {
+              method: "POST",
+              body: form,
+            });
+            const data = await res.json();
+
+            if (data.ok) {
+              alert("✅ Registered successfully! Confirmation email sent.");
+            } else {
+              alert("⚠️ Registration failed: " + (data.error || "Try again"));
+            }
+          } catch (e) {
+            console.error(e);
+            alert("⚠️ Unable to connect to registration service.");
+          }
+
+          // Continue with normal login
+          const userData = { name, email, mobile };
+          localStorage.setItem("kpdbc_user", JSON.stringify(userData));
+          showUser(userData);
+          fetchUserData(email);
+        });
+
+      // 🧑 Show User Info
+      function showUser(user) {
+        loginSection.style.display = "none";
+        userInfo.style.display = "block";
+        document.getElementById("userName").innerText = user.name;
+        document.getElementById("userInitial").innerText = user.name
+          .charAt(0)
+          .toUpperCase();
+      }
+
+      // 🌙 Theme toggle
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem(
+          "kpdbc_dark",
+          document.body.classList.contains("dark-mode")
+        );
+      });
+
+      // 📥 Fetch user data
+      async function fetchUserData(email) {
+        const form = new URLSearchParams();
+        form.append("action", "getUserPosts");
+        form.append("email", email);
+
+        const res = await fetch(WEB_APP_URL, { method: "POST", body: form });
+        const data = await res.json();
+        if (data.ok) renderPosts(data);
+        else
+          content.innerHTML = `<div class='alert alert-danger'>⚠️ ${
+            data.error || "Error fetching data"
+          }</div>`;
+      }
+
+      // 🧾 Render posts with all categories
+      function renderPosts(data) {
+        content.innerHTML = "";
+
+        if (!data.posts || data.posts.length === 0) {
+          content.innerHTML =
+            "<div class='alert alert-warning'>No posts available yet.</div>";
+          return;
+        }
+
+        const batches = {};
+        data.batches.forEach((b) => (batches[b.batchId] = b.name));
+        const postsByBatch = {};
+        data.posts.forEach((p) => {
+          if (!postsByBatch[p.batchId]) postsByBatch[p.batchId] = [];
+          postsByBatch[p.batchId].push(p);
+        });
+
+        for (const [batchId, posts] of Object.entries(postsByBatch)) {
+          const batchName = batches[batchId] || batchId;
+          const batchDiv = document.createElement("div");
+          batchDiv.innerHTML = `<h4 class='mt-4 mb-3'><i class="fa-solid fa-layer-group"></i> ${batchName}</h4>`;
+
+          const categories = [
+            "Live Class",
+            "Video",
+            "Document",
+            "Image",
+            "Test",
+          ];
+          const group = {};
+          categories.forEach(
+            (c) => (group[c] = posts.filter((p) => p.category === c))
+          );
+
+          for (const cat of categories) {
+            if (group[cat].length > 0) {
+              const catTitle = document.createElement("h5");
+              catTitle.innerHTML = `<i class="fa-solid fa-tags"></i> ${cat}`;
+              batchDiv.appendChild(catTitle);
+
+              group[cat].forEach((p) => {
+                const card = document.createElement("div");
+                card.className = "card mb-3";
+                const catClass = "cat-" + cat.replace(/\s+/g, "");
+                let buttonLabel =
+                  cat === "Live Class"
+                    ? "🔴 Join Live Class"
+                    : cat === "Video"
+                    ? "▶️ Watch Video"
+                    : cat === "Document"
+                    ? "📄 View Document"
+                    : cat === "Image"
+                    ? "🖼️ View Image"
+                    : "📝 Take Test";
+
+                card.innerHTML = `
+                  <div class='d-flex justify-content-between align-items-center mb-2'>
+                    <h5 class='mb-0 text-primary'><i class="fa-solid fa-book-open"></i> ${
+                      p.title
+                    }</h5>
+                    <span class='category-badge ${catClass}'>${cat}</span>
+                  </div>
+                  <p class='small text-muted mb-1'>${p.description || ""}</p>
+                  <p class='small text-secondary mb-2'>
+                    <i class="fa-regular fa-calendar"></i> ${new Date(
+                      p.createdAt
+                    ).toLocaleString()}
+                  </p>
+                  <a href='${
+                    p.driveUrl
+                  }' target='_blank' class='btn btn-outline-primary btn-sm w-100'>
+                    ${buttonLabel}
+                  </a>
+                `;
+                batchDiv.appendChild(card);
+              });
+            }
+          }
+          content.appendChild(batchDiv);
+        }
+      }
+
+      // 🚪 Logout
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("kpdbc_user");
+        userInfo.style.display = "none";
+        loginSection.style.display = "block";
+        content.innerHTML = "";
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("mobile").value = "";
+      });
+
+      switchBtn.addEventListener("click", () => logoutBtn.click());
+    </script>
+  </body>
+</html>
